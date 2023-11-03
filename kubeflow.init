@@ -1,0 +1,13 @@
+# cloud-init for kubeflow
+
+package_update: true
+package_upgrade: true
+
+runcmd:
+ - mkdir /kubeflow
+ - wget https://bit.ly/2tp2aOo -O /kubeflow/install-kubeflow-pre-micro.sh
+ - chmod a+x /kubeflow/install-kubeflow-pre-micro.sh
+ - wget https://bit.ly/2tndL0g -O /kubeflow/install-kubeflow.sh
+ - chmod a+x /kubeflow/install-kubeflow.sh
+ - printf "\n\nexport KUBECONFIG=/snap/microk8s/current/client.config\n\n" >> /home/multipass/.bashrc
+
